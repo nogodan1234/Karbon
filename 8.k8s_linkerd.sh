@@ -36,5 +36,5 @@ kubectl get -n emojivoto deploy -o yaml | linkerd inject - | kubectl apply -f -
 #linkerd -n emojivoto top deploy
 #linkerd -n emojivoto tap deploy/web
 
-echo "Add another ns to linkerd:
+echo "Add another ns to linkerd"
 kubectl get -n ntnx-logging deploy -o yaml | linkerd inject - | kubectl apply -f -
