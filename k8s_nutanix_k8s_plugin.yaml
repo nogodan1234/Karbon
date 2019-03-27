@@ -76,12 +76,12 @@ metadata:
     name: silver
 provisioner: nutanix/abs
 parameters:
-     prismEndPoint: PRISM_ELEMENT_VIP:9440
-     dataServiceEndPoint: DATA_SVC_IP:3260
+     prismEndPoint: $PRISM_ELEMENT_VIP:9440
+     dataServiceEndPoint: $DATA_SVC_IP:3260
      user: admin
-     password: PE_ADMIN_PASSWD
+     password: $PE_ADMIN_PASSWD
      secretName: nutanix-abs-secret
-     storageContainer: PE_STORAGE_CONTAINER_NAME
+     storageContainer: $PE_STORAGE_CONTAINER_NAME
      fsType: ext4
      chapAuthEnabled: “false”
 #     iscsiSecretName: iscsi_secret_name
@@ -96,7 +96,7 @@ metadata:
   namespace: default
 data:
   # base64 encoded admin:password. E.g.: echo -n "admin_name:password" | base64
-  key: YWRtaW46U1JFczRldmEh
+  key: $SECRET
 type: nutanix/abs
 
 ---
@@ -112,5 +112,3 @@ spec:
         requests:
             storage: 3Gi
     storageClassName: silver
-
-
