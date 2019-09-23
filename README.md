@@ -21,7 +21,6 @@ ex) $sh k8s_metallb.sh
 
 1.  nx_cluster_setup.sh.
 
-  ####################. 
   This script can be run one of Nutanix Prism Element CVM.
 
   With given information, it will set your cluster autonomously. 
@@ -37,8 +36,6 @@ ex) $sh k8s_metallb.sh
 
 2. 	k8s_config.sh.
 
-  ####################.
-
   You have to have installed kubectl cli on your laptop.
 
   You have to have downloaded kubeconfig file on your ~/Download foler from Karbon UI first.
@@ -49,8 +46,6 @@ ex) $sh k8s_metallb.sh
 
 
 3.	k8s_dashboard.sh.
-
-  ####################.
 
   This shell will install Kubernetes dashboard to your cluster.
 
@@ -65,28 +60,20 @@ ex) $sh k8s_metallb.sh
 
 4.	k8s_helm.sh.
 
-  ####################.
-
   This script will install helm pkg(tilerless) on your cluster.
 
 
 5.	k8s_prometheus.sh.
-
-  ####################.
 
   This script will install prometheus pkg via helm.
 
 
 6.	k8s_istio_knative.sh.
 
-  ####################.
-
   This script will install Istio & Knative pkg.
 
 
 7.	k8s_kubescope.sh.
-
-  ####################.
 
   This script will install Kubescope container for container perf check.
 
@@ -95,15 +82,12 @@ ex) $sh k8s_metallb.sh
 
 8.	k8s_linkerd.sh.
 
-  ####################.
-
   This script will install Linkerd pkg on your cluster.
 
   - For more detail : https://linkerd.io/2/getting-started/.
 
-
 		PS: Most of scripts will be running fine on other native k8s cluster.
-     
+
 
 ## Authors
 
