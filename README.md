@@ -1,121 +1,84 @@
-<html>
-<body lang=EN-US style='tab-interval:.5in'>
+# Nutanix Karbon script repo by Taeho choi
 
-<div class=WordSection1>
+## Getting Started
 
-<p class=MsoNormal># Karbon<o:p></o:p></p>
+These scripts are created with intention to help Nutanix Karbon Customer by installing additional Kubernetes packages 
 
-<p class=MsoNormal>This repo is sharing some useful scripts for Nutanix Karbon
-Cluster<o:p></o:p></p>
+### Prerequisites
 
-<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+Need to understand basic bash script syntax and Kubernetes components.
+```
+kubectl, master, node,secret ...
+```
 
-<p class=MsoNormal>1.nx_cluster_setup.sh <o:p></o:p></p>
+### How to run each script !
+Just download with git clone then run the shell script with sh command from any linux base system - Mac,Centos,Ubuntu etc
+```
+ex) $sh k8s_metallb.sh
+```
 
-<p class=MsoNormal>####################<o:p></o:p></p>
+### Detail on each script
 
-<p class=MsoNormal>This script can be run one of Nutanix Prism Element CVM.<o:p></o:p></p>
+1.  nx_cluster_setup.sh
+	####################
+	This script can be run one of Nutanix Prism Element CVM.
+	With given information, it will set your cluster autonomously
+	- DHCP network creation
+	- Static network creation for Prism Central especially
+	- Karbon image registration - centos
+	- Prism Element - data service ip setup
 
-<p class=MsoNormal>With given information, it will set your cluster
-autonomously <o:p></o:p></p>
 
-<p class=MsoNormal>- DHCP network creation<o:p></o:p></p>
+2. 	k8s_config.sh
+	####################
+	You have to have installed kubectl cli on your laptop
+	You have to have downloaded kubeconfig file on your ~/Download foler from Karbon UI first
+	- https://portal.nutanix.com/#/page/docs/details?targetId=Karbon-v08:Karbon-v08
+	This shell move the kubeconfig file to ~/.kube/config so that your kubectl can talk to new Karbon cluster
 
-<p class=MsoNormal>- Static network creation for Prism Central especially<o:p></o:p></p>
+3.	k8s_dashboard.sh
+	####################
+	This shell will install Kubernetes dashboard to your cluster
+	You will see secret token in the end to login the dashboard
+	Dashboard URL will be
+	- http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/
+	Please do not close the termial as kubectl proxy need to redirect the port to your local laptop
 
-<p class=MsoNormal>- Karbon image registration - ubuntu,centos<o:p></o:p></p>
+4.	k8s_helm.sh
+	####################
+	This script will install helm pkg(tilerless) on your cluster
 
-<p class=MsoNormal>- Prism Element - data service ip setup<o:p></o:p></p>
+5.	k8s_prometheus.sh
+	####################
+	This script will install prometheus pkg via helm
 
-<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+6.	k8s_istio_knative.sh
+	####################
+	This script will install Istio & Knative pkg
 
-<p class=MsoNormal>2.k8s_config.sh<o:p></o:p></p>
+7.	k8s_kubescope.sh
+	####################
+	This script will install Kubescope container for container perf check
+	- For more detail : https://github.com/hharnisc/kubescope-cli
 
-<p class=MsoNormal>####################<o:p></o:p></p>
+8.	k8s_linkerd.sh
+	####################
+	This script will install Linkerd pkg on your cluster
+	- For more detail : https://linkerd.io/2/getting-started/
 
-<p class=MsoNormal>You have to have installed kubectl cli<span
-style='mso-spacerun:yes'>  </span>on your laptop <o:p></o:p></p>
+	PS: Most of scripts will be running fine on other native k8s cluster
 
-<p class=MsoNormal>You have to have downloaded kubeconfig file on your
-~/Download foler from Karbon UI first<o:p></o:p></p>
+## Authors
 
-<p class=MsoNormal>-
-https://portal.nutanix.com/#/page/docs/details?targetId=Karbon-v08:Karbon-v08<o:p></o:p></p>
+* **Taeho Choi** - (https://github.com/nogodan1234)
 
-<p class=MsoNormal>This shell move the kubeconfig file to ~/.kube/config so
-that your kubectl can talk to new Karbon cluster<o:p></o:p></p>
+See also the list of [contributors](https://github.com/nogodan1234/nutanix/contributors) who participated in this project.
 
-<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+## License
 
-<p class=MsoNormal>3.k8s_dashboard.sh<o:p></o:p></p>
+This project is licensed under the MIT License
 
-<p class=MsoNormal>####################<o:p></o:p></p>
+## Acknowledgments
 
-<p class=MsoNormal>This shell will install Kubernetes dashboard to your cluster<o:p></o:p></p>
-
-<p class=MsoNormal>You will see secret token in the end to login the dashboard<o:p></o:p></p>
-
-<p class=MsoNormal>Dashboard URL will be<o:p></o:p></p>
-
-<p class=MsoNormal>- http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/<o:p></o:p></p>
-
-<p class=MsoNormal>Please do not close the termial as kubectl proxy need to
-redirect the port to your local laptop<o:p></o:p></p>
-
-<p class=MsoNormal><o:p>&nbsp;</o:p></p>
-
-<p class=MsoNormal>4.k8s_helm.sh<o:p></o:p></p>
-
-<p class=MsoNormal>####################<o:p></o:p></p>
-
-<p class=MsoNormal>This script will install helm pkg(tilerless)<span
-style='mso-spacerun:yes'>  </span>on your cluster<o:p></o:p></p>
-
-<p class=MsoNormal><o:p>&nbsp;</o:p></p>
-
-<p class=MsoNormal>5.k8s_prometheus.sh<o:p></o:p></p>
-
-<p class=MsoNormal>####################<o:p></o:p></p>
-
-<p class=MsoNormal>This script will install prometheus pkg via helm <o:p></o:p></p>
-
-<p class=MsoNormal><o:p>&nbsp;</o:p></p>
-
-<p class=MsoNormal>6.k8s_istio_knative.sh<o:p></o:p></p>
-
-<p class=MsoNormal>####################<o:p></o:p></p>
-
-<p class=MsoNormal>This script will install Istio &amp; Knative pkg<o:p></o:p></p>
-
-<p class=MsoNormal><o:p>&nbsp;</o:p></p>
-
-<p class=MsoNormal>7.k8s_kubescope.sh<o:p></o:p></p>
-
-<p class=MsoNormal>####################<o:p></o:p></p>
-
-<p class=MsoNormal>This script will install Kubescope container for container
-perf check<o:p></o:p></p>
-
-<p class=MsoNormal>- For more detail :
-https://github.com/hharnisc/kubescope-cli<o:p></o:p></p>
-
-<p class=MsoNormal><o:p>&nbsp;</o:p></p>
-
-<p class=MsoNormal>8.k8s_linkerd.sh<o:p></o:p></p>
-
-<p class=MsoNormal>####################<o:p></o:p></p>
-
-<p class=MsoNormal>This script will install Linkerd pkg on your cluster<o:p></o:p></p>
-
-<p class=MsoNormal>- For more detail : https://linkerd.io/2/getting-started/<o:p></o:p></p>
-
-<p class=MsoNormal><o:p>&nbsp;</o:p></p>
-
-<p class=MsoNormal>PS: Most of scripts will be running fine on other native k8s
-cluster</p>
-
-</div>
-
-</body>
-
-</html>
+* Nutanix is not officially tested on these scripts nor provide supports on these.
+* All responsibilies to use this scripts are on each individual.
