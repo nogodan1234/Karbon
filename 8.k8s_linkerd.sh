@@ -31,10 +31,10 @@ linkerd dashboard
 curl -sL https://run.linkerd.io/emojivoto.yml | kubectl apply -f - 
 kubectl -n emojivoto port-forward $(kubectl -n emojivoto get po -l app=web-svc -oname | cut -d/ -f 2) 8080:80
 kubectl get -n emojivoto deploy -o yaml | linkerd inject - | kubectl apply -f -
-#linkerd -n emojivoto check --proxy
-#linkerd -n emojivoto stat deploy
-#linkerd -n emojivoto top deploy
-#linkerd -n emojivoto tap deploy/web
+linkerd -n emojivoto check --proxy
+linkerd -n emojivoto stat deploy
+linkerd -n emojivoto top deploy
+linkerd -n emojivoto tap deploy/web
 
 echo "Add another ns to linkerd"
 kubectl get -n ntnx-logging deploy -o yaml | linkerd inject - | kubectl apply -f -

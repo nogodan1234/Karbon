@@ -1,3 +1,5 @@
+#Change to user home directory
+cd ~
 curl -L https://istio.io/downloadIstio | sh -
 export PATH=$PWD/bin:$PATH
 echo "Installing istio for demo profile base on your current kubeconfig file...."
