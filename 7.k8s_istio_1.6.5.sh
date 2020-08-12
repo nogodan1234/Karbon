@@ -14,3 +14,5 @@ kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=gr
 
 #How to delete istio from the cluster
 #istioctl manifest generate --set profile=demo | kubectl delete -f -
+#kubectl patch svc grafana -n istio-system -p '{"spec": {"type": "LoadBalancer"}}'
+#kubectl patch svc kiali -n istio-system -p '{"spec": {"type": "LoadBalancer"}}'

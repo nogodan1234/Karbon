@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hostname-v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hostname
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: hostname
+        version: v1
+    spec:
+      containers:
+      - image: rstarmer/hostname:v1
+        imagePullPolicy: Always
+        name: hostname
+        resources: {}
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: hostname
+  name: hostname
+spec:
+  externalTrafficPolicy: Cluster
+  ports:
+  - nodePort: 31575
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: hostname
+  sessionAffinity: None
+  type: LoadBalancer
