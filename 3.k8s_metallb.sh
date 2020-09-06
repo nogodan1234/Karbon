@@ -13,7 +13,8 @@ addresses:
 "
 echo " Once the modification is done please create ConfigMap. You know how to do it :)  Right?"
 
-#Remove metallb from the cluster
-#kubectl delete secret memberlist -n metallb-system
-#kubectl delete -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/metallb.yaml
-#kubectl delete -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/namespace.yaml
+#Or use helm com to provide values 
+#helm install metallb stable/metallb --namespace kube-system \
+#  --set configInline.address-pools[0].name=metallb-ip-pool \
+#  --set configInline.address-pools[0].protocol=layer2 \
+#  --set configInline.address-pools[0].addresses[0]=10.134.83.229-10.134.83.233
