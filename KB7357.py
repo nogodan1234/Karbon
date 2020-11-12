@@ -20,8 +20,7 @@
 # the MIT license. (https://opensource.org/licenses/MIT)                #
 #########################################################################
 
-import logging
-import re,subprocess,sys
+import subprocess,sys,re
 import yaml
 from pathlib import Path
 
